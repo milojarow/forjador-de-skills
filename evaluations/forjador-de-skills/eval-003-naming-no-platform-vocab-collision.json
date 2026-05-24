@@ -1,0 +1,15 @@
+{
+  "id": "forjador-003",
+  "skills": ["forjador-de-skills"],
+  "query": "What should I name the skill repo for working with EspoCRM, and what should I call its two auth paths?",
+  "expected_behavior": [
+    "Activate the forjador-de-skills skill",
+    "Repo name: espocrm-skills (the <app>-skills pattern, official product-name token)",
+    "Do NOT name the auth paths after EspoCRM's own user types — admin/super-admin collide with real EspoCRM types and invert the mapping",
+    "Name by what authenticates: api-user path / admin path",
+    "Reference naming-and-privacy.md"
+  ],
+  "expected_content": ["espocrm-skills", "<app>-skills", "collide", "vocabulary", "naming-and-privacy.md"],
+  "priority": "medium",
+  "notes": "Tests the naming convention plus the don't-collide-with-the-platform's-own-vocabulary rule."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "forjador-005",
+  "skills": ["forjador-de-skills"],
+  "query": "Give me the list of files a finished skill repo needs.",
+  "expected_behavior": [
+    "Activate the forjador-de-skills skill",
+    "List the CORE (always): .claude-plugin/{marketplace,plugin}.json, skills/<n>/SKILL.md + reference/, evaluations/, README, LICENSE, CLAUDE.md",
+    "Clarify CLAUDE.md IS committed in skill repos (public guidance, not operator context)",
+    "Note OPTIONAL components are added only when their trigger applies (hooks/, .mcp.json.example, build.sh+dist/, docs/, skills.png) — not a fixed shape",
+    "Reference repo-anatomy.md and the templates/ directory"
+  ],
+  "expected_content": ["core", ".claude-plugin", "evaluations", "CLAUDE.md", "optional", "repo-anatomy.md"],
+  "priority": "medium",
+  "notes": "Tests core+optional understanding and the CLAUDE.md-committed-in-skill-repos exception."
+}

@@ -1,0 +1,37 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code when working with this repository.
+
+## Project Overview
+
+This is the **{{REPO_NAME}}** repository — {{one-line purpose}}.
+
+**Repository**: https://github.com/{{OWNER}}/{{REPO_NAME}}
+
+## Repository Structure
+
+```
+{{REPO_NAME}}/
+├── .claude-plugin/          # Claude Code plugin configuration
+├── CLAUDE.md                # This file
+├── README.md                # Project overview
+├── LICENSE                  # MIT License
+├── evaluations/             # Test scenarios for the skill
+└── skills/
+    └── {{sub-skill-name}}/
+        ├── SKILL.md          # Entry point
+        └── reference/        # Depth (progressive disclosure)
+```
+
+## The skill
+
+### {{sub-skill-name}}
+{{Description of what it covers.}}
+
+## Skill Activation
+
+Activates when {{trigger conditions}}.
+
+## Updating this skill
+
+After any session that discovers a new pattern. Keep entries generic — patterns and examples, never client data. The git log of this repo is the diary.

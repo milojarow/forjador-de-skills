@@ -1,0 +1,16 @@
+{
+  "id": "forjador-002",
+  "skills": ["forjador-de-skills"],
+  "query": "My draft notes have a real phone number and our production instance URL in the examples. I'm about to git init and push the skill repo. Anything I should do first?",
+  "expected_behavior": [
+    "Activate the forjador-de-skills skill",
+    "STOP — run the privacy scrub BEFORE anything touches the repo (pipeline step 1)",
+    "Replace real values with obvious placeholders (+52 555 123 4567, <your-instance-url>)",
+    "Scrub the SOURCE before copying so the repo's git history never contains the real data",
+    "Verify against git history (git log --all -S '<value>'), not just the working tree",
+    "Reference naming-and-privacy.md"
+  ],
+  "expected_content": ["scrub", "placeholder", "history", "git log", "naming-and-privacy.md"],
+  "priority": "high",
+  "notes": "Privacy gate is HARD and FIRST; the scrub (not .gitignore) is the safety net for a public repo."
+}

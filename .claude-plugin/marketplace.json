@@ -1,0 +1,33 @@
+{
+  "name": "forjador-de-skills",
+  "description": "Meta-skill for forging well-made Claude Code skills",
+  "owner": {
+    "name": "milojarow",
+    "url": "https://github.com/milojarow"
+  },
+  "plugins": [
+    {
+      "name": "forjador-de-skills",
+      "source": "./",
+      "description": "How to forge a well-made Claude Code skill plugin — repo anatomy (core + optional components), the authoring pipeline, distribution via a GitHub marketplace, naming and privacy conventions, plus copyable templates. A thin layer over superpowers:writing-skills and skill-creator.",
+      "version": "0.1.0",
+      "author": {
+        "name": "milojarow",
+        "url": "https://github.com/milojarow"
+      },
+      "category": "productivity",
+      "keywords": [
+        "skill",
+        "plugin",
+        "marketplace",
+        "authoring",
+        "meta",
+        "scaffolding",
+        "claude-code"
+      ],
+      "homepage": "https://github.com/milojarow/forjador-de-skills",
+      "repository": "https://github.com/milojarow/forjador-de-skills",
+      "license": "MIT"
+    }
+  ]
+}

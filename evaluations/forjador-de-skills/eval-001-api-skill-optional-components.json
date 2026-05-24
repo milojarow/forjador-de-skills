@@ -1,0 +1,16 @@
+{
+  "id": "forjador-001",
+  "skills": ["forjador-de-skills"],
+  "query": "I'm packaging a skill for a REST/MCP API tool (no local files involved). Which optional repo components does it need — hooks, .mcp.json.example, build.sh?",
+  "expected_behavior": [
+    "Activate the forjador-de-skills skill",
+    "Explain the anatomy is core + optional-with-triggers, NOT a fixed shape",
+    "Skip hooks/ — that's for skills that edit local files; the hook matcher (Read|Edit|Write|Bash) never sees MCP calls",
+    "Include .mcp.json.example (placeholders) — the skill depends on/recommends an MCP",
+    "Skip build.sh + dist/ — only for standalone-zip distribution, not marketplace-from-repo",
+    "Reference repo-anatomy.md"
+  ],
+  "expected_content": ["optional", "trigger", "hooks", ".mcp.json.example", "repo-anatomy.md"],
+  "priority": "high",
+  "notes": "Tests the core+optional decision tree; guards against blindly copying a fixed shape."
+}

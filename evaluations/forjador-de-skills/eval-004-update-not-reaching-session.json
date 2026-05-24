@@ -1,0 +1,16 @@
+{
+  "id": "forjador-004",
+  "skills": ["forjador-de-skills"],
+  "query": "I edited my skill repo, bumped the version, and did acp. I ran /reload-plugins but my Claude Code session still shows the old version. Why, and how do I get the update?",
+  "expected_behavior": [
+    "Activate the forjador-de-skills skill",
+    "Explain /reload-plugins does NOT fetch from the remote — it only reloads locally-cached plugin definitions",
+    "Auto-update fires at Claude Code STARTUP only",
+    "To update now: restart Claude Code (pulls the clone AND reinstalls), OR /plugin marketplace update <name> then reinstall the plugin (separate steps)",
+    "Optionally verify the marketplace has autoUpdate: true in known_marketplaces.json",
+    "Reference distribution.md"
+  ],
+  "expected_content": ["startup", "reload-plugins", "marketplace update", "reinstall", "distribution.md"],
+  "priority": "high",
+  "notes": "The #1 confusion: reload != fetch; updates land at startup, not live in-session."
+}
