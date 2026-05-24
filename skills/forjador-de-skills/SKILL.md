@@ -1,6 +1,6 @@
 ---
 name: forjador-de-skills
-description: Use when building, packaging, or publishing a new Claude Code skill plugin in this setup — scaffolding a skill repo, deciding which files it needs, wiring it as a GitHub marketplace, naming a new skill, or stamping one from templates. Use when turning a draft or pile of notes into a finished, installable skill, or when an existing skill repo needs the standard structure or distribution conventions.
+description: Use when building, packaging, or publishing a new Claude Code skill plugin in this setup — scaffolding a skill repo, writing its `marketplace.json` / `plugin.json` manifests, wiring it as a GitHub marketplace, naming a new skill, or stamping one from templates. Use when turning a draft or pile of notes into a finished, installable skill; when an existing skill repo needs the standard structure; or when sorting out distribution — how a published skill installs and how updates / auto-update reach a Claude Code session.
 ---
 
 # forjador-de-skills

@@ -1,0 +1,20 @@
+[
+  {"query": "I have a pile of notes for a CLI tool and I want to turn them into an installable Claude Code skill with its own repo. Where do I start?", "should_trigger": true},
+  {"query": "Help me scaffold a new skill plugin repo and publish it as a GitHub marketplace.", "should_trigger": true},
+  {"query": "What files does a Claude Code skill repo actually need — what's core vs optional?", "should_trigger": true},
+  {"query": "Turn this draft into a finished, installable skill.", "should_trigger": true},
+  {"query": "My skill repo is missing the standard structure. Can you fix its anatomy?", "should_trigger": true},
+  {"query": "Stamp a new skill called foo-skills from the templates.", "should_trigger": true},
+  {"query": "How do I wire up marketplace.json and plugin.json so this installs as a plugin?", "should_trigger": true},
+  {"query": "I'm naming a new skill — what's the convention so it doesn't collide with the tool's own vocabulary?", "should_trigger": true},
+  {"query": "How does an update to my published skill actually reach a Claude Code session?", "should_trigger": true},
+  {"query": "Package my eww notes into a distributable skill like my sway one.", "should_trigger": true},
+  {"query": "Set up the repo-as-marketplace pattern for a skill I just wrote.", "should_trigger": true},
+  {"query": "What's the best way to phrase the step-by-step instructions inside a SKILL.md so the model actually follows them?", "should_trigger": false},
+  {"query": "How do I run an evaluation benchmark to measure whether my skill's outputs are high quality?", "should_trigger": false},
+  {"query": "Help me set up a new Next.js project with Tailwind CSS.", "should_trigger": false},
+  {"query": "Create a Meta Ads campaign for a client.", "should_trigger": false},
+  {"query": "How do I query Contacts in EspoCRM via the API?", "should_trigger": false},
+  {"query": "Write a bash script to back up my dotfiles.", "should_trigger": false},
+  {"query": "Fix my n8n workflow that's failing on the HTTP Request node.", "should_trigger": false}
+]
