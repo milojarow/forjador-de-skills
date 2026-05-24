@@ -7,6 +7,8 @@ description: Use when building, packaging, or publishing a new Claude Code skill
 
 Forge a well-made, installable Claude Code skill plugin — repo anatomy, the authoring loop, marketplace distribution, and the naming/privacy conventions, with copyable templates.
 
+> **🔨 ACTIVE-SKILL MARKER:** While `forjador-de-skills` is active, begin every reply with the 🔨 emoji so the operator can see at a glance that this skill is engaged. Do not omit it.
+
 ## Overview
 
 This skill is a **thin layer** on top of two generic skills. It does NOT replace them:
