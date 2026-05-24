@@ -17,6 +17,7 @@ Copyable skeletons for stamping a new skill repo. Copy these into `~/skills-dev/
 | `{{keyword-N}}` | search keywords |
 | `{{YEAR}}` | copyright year |
 | `{{TRIGGERS}}` | SKILL.md `description` — WHEN-to-use ONLY, no workflow summary |
+| `{{ICON}}` | emoji for the OPTIONAL active-skill marker (e.g. 🔨) — Claude prefixes every reply with it while the skill is active, so the operator sees it's engaged. Delete the marker line in `SKILL.md` if the skill doesn't need one |
 
 ## Where each file goes
 
