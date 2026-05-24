@@ -11,8 +11,8 @@ This repository contains one skill — `forjador-de-skills` — that captures th
 Building a skill plugin "by hand" each time means re-deriving the same decisions: which files the repo needs, how marketplace auto-update actually works, where private data could leak, how to name things without colliding with the target tool's own vocabulary. This skill encodes those once.
 
 It does **not** replace:
-- **`superpowers:writing-skills`** — the RED-GREEN-REFACTOR discipline + Claude Search Optimization for skill content.
-- **`skill-creator`** — scaffolding, evals, and description tuning.
+- **`superpowers:writing-skills`** *(required)* — the RED-GREEN-REFACTOR discipline + Claude Search Optimization for skill content.
+- **`skill-creator`** *(optional helper)* — scaffolding and eval files. Not needed for the core flow (this skill ships its own templates and validates with a cheap GREEN check). ⚠️ Its optimizer/benchmark spawns **many** headless `claude -p` runs and **burns usage fast** — don't run it as a routine check.
 
 It **adds** the packaging + distribution conventions specific to this setup (the `<app>-skills` marketplace pattern).
 
@@ -38,7 +38,8 @@ Then install:
 
 ## Requirements
 
-- Claude Code, with the `superpowers` and `skill-creator` plugins available (this skill leans on them).
+- Claude Code with the **`superpowers`** plugin available (required — the authoring discipline).
+- **`skill-creator`** is **optional** — only for its scaffolding/eval helpers. ⚠️ Its optimizer/benchmark runs many headless `claude -p` instances and burns usage fast; prefer this skill's built-in GREEN validation.
 - A GitHub account, for publishing skill repos as marketplaces.
 
 ## License

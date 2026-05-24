@@ -11,10 +11,11 @@ Forge a well-made, installable Claude Code skill plugin — repo anatomy, the au
 
 ## Overview
 
-This skill is a **thin layer** on top of two generic skills. It does NOT replace them:
+This skill is a **thin layer** that adds packaging/distribution conventions on top of the generic authoring skills — it does NOT replace them:
 
 - **REQUIRED BACKGROUND:** Use `superpowers:writing-skills` for the authoring discipline — RED → GREEN → REFACTOR (no skill without a failing test first) and Claude Search Optimization of the `description` field.
-- **REQUIRED SUB-SKILL:** Use `skill-creator:skill-creator` for scaffolding helpers, eval files, and description/benchmark tuning.
+- **OPTIONAL HELPER:** `skill-creator:skill-creator` has scaffolding helpers and eval files. You do **not** need it for the core flow — this skill ships its own [templates/](templates/) for scaffolding and validates with the cheap GREEN check (step 7).
+  > **⚠️ Cost guard:** `skill-creator`'s description-optimizer (`run_loop.py`) and the headless trigger-benchmark spawn **many** background `claude -p` instances and **burn usage fast** (and `run_loop.py` is broken on recent Claude Code — false negatives). Default to GREEN validation (step 7: one subagent). Reach for the headless benchmark only **deliberately and sparingly** — when a skill's *auto-triggering* is the specific open question — never as a routine "check".
 
 The forjador adds only the **packaging + distribution conventions** of this setup: the `<app>-skills` repo-as-marketplace pattern, which files the repo needs, how updates reach the operator, and the privacy/naming gates. Reference repos that embody it: `eww-skills` and `sway-skills` (milojarow), and `n8n-mcp-skills` (czlonkowski).
 
@@ -26,7 +27,7 @@ The forjador adds only the **packaging + distribution conventions** of this setu
 - Publishing a skill as a GitHub marketplace, or debugging why an update didn't reach a session.
 - Naming a new skill.
 
-**Not for:** the skill's content discipline (that's `superpowers:writing-skills`) or generic eval mechanics (that's `skill-creator:skill-creator`).
+**Not for:** the skill's content discipline — that's `superpowers:writing-skills`. (Heavy/automated eval tooling lives in the optional `skill-creator`; mind the cost guard above.)
 
 ## The pipeline (8 steps)
 

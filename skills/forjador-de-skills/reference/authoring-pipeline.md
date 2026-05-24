@@ -56,7 +56,9 @@ No remote, no push, no `marketplace add` until the operator declares it ready (t
 
 ## 7. Validate (GREEN — the real test)
 
-Dispatch a subagent that has ONLY this skill: give it the file paths + the eval QUERIES (NOT the expected answers). Make it read `SKILL.md` first and drill into reference files as needed. Grade its answers against `expected_behavior`. This catches findability gaps and dangling cross-references that a self-review misses. Finding a gap is the win.
+Dispatch a subagent that has ONLY this skill: give it the file paths + the eval QUERIES (NOT the expected answers). Make it read `SKILL.md` first and drill into reference files as needed. Grade its answers against `expected_behavior`. This catches findability gaps and dangling cross-references that a self-review misses. Finding a gap is the win. **One subagent — cheap.**
+
+> **⚠️ Don't reach for the headless benchmark by default.** `skill-creator`'s description-optimizer and any `claude -p` trigger-benchmark spawn **many** background model instances and **burn usage fast** (and the optimizer is broken on recent Claude Code). GREEN above is the default. Use a headless benchmark only deliberately — when a skill's *auto-triggering* recall/precision is the specific open question — never as a routine "does this work" check.
 
 ## 8. Refactor
 
