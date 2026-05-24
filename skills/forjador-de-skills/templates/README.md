@@ -2,6 +2,8 @@
 
 Copyable skeletons for stamping a new skill repo. Copy these into `~/skills-dev/drafts/<app>-skills/` (dropping the `.tmpl` suffix and placing each at the path below), then replace every `{{PLACEHOLDER}}`.
 
+> **This `README.md` is the legend — it is NOT copied into a new repo.** Only the `*.tmpl` files and `LICENSE` (listed below) get stamped.
+
 ## Placeholders
 
 | Placeholder | Meaning |

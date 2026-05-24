@@ -45,6 +45,25 @@ One skill repo = **one git repo = one marketplace**. The marketplace serves one 
 
 **Rule:** the anatomy is core + optional-with-triggers, **never a fixed shape**. For each new skill, walk the optional list and consciously include or skip each one, with a reason — so nothing is omitted silently.
 
+### Implementing `hooks/` (local-file-editing skills only)
+
+The hook is generic and data-driven — it reads each SKILL.md's frontmatter, so only the per-skill patterns change. To add it:
+
+1. Add a `metadata` block to the sub-skill's frontmatter:
+   ```yaml
+   ---
+   name: <sub-skill-name>
+   description: ...
+   metadata:
+     priority: 7
+     pathPatterns: ["**/eww/**/*.scss", "**/*.yuck"]
+     bashPatterns: ["eww\\s+(reload|open|inspector)"]
+   ---
+   ```
+2. Copy the proven `hooks/` from a skill that already ships it (e.g. milojarow's `eww-skills/hooks/` — `hooks.json` + `pretooluse-inject.py`). The script is generic; **don't rewrite it**, only the per-skill `metadata` patterns differ.
+
+`hooks.json` registers a PreToolUse hook on `Read|Edit|Write|Bash` that runs `pretooluse-inject.py`; the script matches `file_path` against `pathPatterns` and bash commands against `bashPatterns`, then injects the matching skill (deduped per session). It never sees MCP tool calls — which is why API/MCP-only skills skip `hooks/` entirely.
+
 ## Sub-skill count
 
 One repo can hold a single sub-skill (`espocrm-skills/skills/espocrm`) or many (`eww-skills` has 6, `sway-skills` has 11). Split into several when the domain has distinct concerns with their own triggers; keep one when it's cohesive.
