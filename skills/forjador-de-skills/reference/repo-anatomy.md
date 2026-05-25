@@ -60,7 +60,7 @@ The hook is generic and data-driven — it reads each SKILL.md's frontmatter, so
      bashPatterns: ["eww\\s+(reload|open|inspector)"]
    ---
    ```
-2. Copy the proven `hooks/` from a skill that already ships it (e.g. milojarow's `eww-skills/hooks/` — `hooks.json` + `pretooluse-inject.py`). The script is generic; **don't rewrite it**, only the per-skill `metadata` patterns differ.
+2. Copy the ready-made `hooks/` shipped with this skill — [`templates/hooks/`](../templates/hooks/) (`hooks.json` + `pretooluse-inject.py`) — into your repo root as `hooks/`. The script is generic and data-driven (it reads each `SKILL.md`'s `metadata` via `${CLAUDE_PLUGIN_ROOT}`); **don't rewrite it** — only the per-skill `metadata` patterns from step 1 differ.
 
 `hooks.json` registers a PreToolUse hook on `Read|Edit|Write|Bash` that runs `pretooluse-inject.py`; the script matches `file_path` against `pathPatterns` and bash commands against `bashPatterns`, then injects the matching skill (deduped per session). It never sees MCP tool calls — which is why API/MCP-only skills skip `hooks/` entirely.
 
