@@ -7,7 +7,7 @@ description: Use when building, packaging, or publishing a new Claude Code skill
 
 Forge a well-made, installable Claude Code skill plugin — repo anatomy, the authoring loop, marketplace distribution, and the naming/privacy conventions, with copyable templates.
 
-> **🔨 ACTIVE-SKILL MARKER:** While `forjador-de-skills` is active, begin every reply with the 🔨 emoji so the operator can see at a glance that this skill is engaged. Do not omit it.
+> **🔨 ACTIVE-SKILL MARKER:** Prefija tu reply con 🔨 **solo en turnos donde el trabajo toca el dominio de `forjador-de-skills`** — forge de skill plugins — scaffolding desde `templates/`, editar `marketplace.json`/`plugin.json`/`SKILL.md`, debugging install/update del marketplace. La **capa/proyecto da igual** (frontend, backend, n8n, script local — todos valen): lo que importa es si *este turno* toca el dominio. En turnos que NO lo tocan (typecheck, build, deploy, git ops, edición o curl de otros dominios), **omite 🔨** aunque la skill se haya cargado antes en la sesión. Si otras skills activas también aplican al mismo turno, **apila sus emojis** en el prefijo.
 
 ## Overview
 
