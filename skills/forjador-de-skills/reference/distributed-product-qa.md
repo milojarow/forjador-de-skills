@@ -38,6 +38,21 @@ WHERE the installer puts deps matters as much as installing them. A plugin's cac
 
 If the skill ships a `status` / health command, its probe must match how the real runtime checks the same thing — otherwise it emits FALSE NEGATIVES that send the next person debugging a non-problem. Failure shape: a status script reports "daemon socket ping failed" while the daemon is healthy and serving sub-second queries, because the script pings differently from the live code path. **A status that lies is worse than no status at all.**
 
+## 5. Write the "done" marker ONLY on success
+
+A skill whose hooks run periodic work behind a **frequency gate** (a stamp/timestamp of the last run — "only run if >24h since last time") has a sharp edge: WHEN you write the stamp matters as much as whether you write it.
+
+**The bug:** writing the gate stamp *unconditionally* — capturing the exit code, then stamping without checking it — means a FAILED run stamps the gate anyway. The job is then locked out for the whole window (24h, 7d, …) WITHOUT having ever run successfully. Worse, "just wait for the schedule" does not recover it — the gate is blocked by a *failure*, not a success, so it never reopens on its own until the window elapses. Classic shape: `rc=$?; echo "$now" > "$STAMP"` — stamped whether `rc` is 0 or nonzero. A first install where a runtime dep is missing (`rc=1`, see check 2) stamps the gate and locks the maintenance job out for the full window without ever running once.
+
+**The fix** — write the marker only on success:
+```
+rc=$?
+if (( rc == 0 )); then echo "$now" > "$STAMP"; else log "rc=$rc — not stamped, retries next run"; fi
+```
+A failed run leaves the gate open → it retries on the next trigger. Same discipline as a watermark/cursor that must NOT advance on failure (advance it early and you skip the unprocessed delta forever).
+
+**General rule:** any control-flow side-effect that means "this is done, don't redo it" — gate stamps, watermarks, processed-markers, done-locks — must be written AFTER and CONDITIONAL ON success. Writing the marker before the success check turns a transient failure into a permanent (or window-long) stall, and the symptom is confusing ("it never runs") because the cause is a stamp from a run that *failed*.
+
 ## Pre-publish checklist (simulate a fresh machine)
 
 - [ ] no hardcoded `$HOME` / username anywhere (see [naming-and-privacy.md](naming-and-privacy.md) — privacy gate)
@@ -45,3 +60,4 @@ If the skill ships a `status` / health command, its probe must match how the rea
 - [ ] installer recreates ALL deps and runs clean on a box that never had them (check 2)
 - [ ] deps live in a stable dir and survive a plugin update — not the per-version cache (check 3)
 - [ ] the self-check/status command agrees with reality and uses the runtime's own probe (check 4)
+- [ ] every gate stamp / watermark / "done" marker is written only on `rc=0` — a failed run must retry, never lock the window (check 5)

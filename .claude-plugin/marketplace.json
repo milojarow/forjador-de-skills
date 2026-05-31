@@ -10,7 +10,7 @@
       "name": "forjador-de-skills",
       "source": "./",
       "description": "How to forge a well-made Claude Code skill plugin — repo anatomy (core + optional components), the authoring pipeline, distribution via a GitHub marketplace, naming and privacy conventions, plus copyable templates. A thin layer over superpowers:writing-skills; skill-creator is an optional helper.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "milojarow",
         "url": "https://github.com/milojarow"
