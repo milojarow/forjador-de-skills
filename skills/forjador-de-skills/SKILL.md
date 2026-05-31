@@ -62,6 +62,12 @@ The repo **is** the marketplace — its `.claude-plugin/marketplace.json` declar
 
 Detail (full update mechanics + gotchas): [reference/distribution.md](reference/distribution.md).
 
+## Validating a skill that installs or runs code
+
+The GREEN check (step 7) proves the docs are findable — not that the skill works off the author's machine. A skill that ships an **installer, hooks, a daemon, or headless subagents** is a distributed product: validate doc↔code coherence after any redesign, ensure the installer recreates EVERY runtime dep in a stable dir (not the per-version cache), and make the `status` command probe the way the runtime actually does. *"Validated on my machine" ≠ "validated as a distributed product."*
+
+Checklist + failure shapes: [reference/distributed-product-qa.md](reference/distributed-product-qa.md).
+
 ## Naming & privacy
 
 - Repos follow `<app>-skills` (this meta-skill is the exception). **Never name things after the target tool's own vocabulary** — it collides with the platform's real terms.

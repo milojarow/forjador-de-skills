@@ -18,6 +18,13 @@ A skill repo may be public. The **scrub is the safety net, not `.gitignore`.** R
 - No instance URLs, container names, server hostnames.
 - No credentials, API keys, or secrets-file paths.
 - No business-model specifics (pricing, internal arrangements).
+- **No hardcoded `$HOME` / username** in code, agents, scripts, or docs — a literal `/home/<user>`, a home-derived slug, or a personal name baked into an agent file. Two harms at once: it leaks a personal name into a public repo, AND it breaks on any machine with a different `$HOME`. Use `$HOME` / runtime detection (e.g. a slug via `echo "$HOME" | tr / -`), never a literal. Pre-publish grep across `*.sh`/`*.mjs`/`*.md`/`*.json`:
+
+  ```bash
+  grep -rn '/home/[a-z]' <repo>          # + grep your own username
+  ```
+
+  (The portability side of this check also lives in the distributed-product QA — see [distributed-product-qa.md](distributed-product-qa.md).)
 
 Scrub the **source** before the first commit, so the repo's git history never holds the real data. Verify against **history**, not just the working tree:
 
