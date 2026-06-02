@@ -44,6 +44,10 @@ Copy the (scrubbed) draft into `skills/<sub-skill>/` — `SKILL.md` + `reference
 
 Descriptive filenames: `eval-001-<topic>.json`.
 
+**Two eval genres — don't confuse them (a repo needs the first):**
+- **`eval-NNN-<topic>.json` — the schema above — STANDARD and required.** GREEN scenarios with `expected_behavior[]` that grade findability + routing into the right reference file. Cheap: graded by step 7's single in-session subagent. Ship 3-5 per sub-skill.
+- **`trigger-evals.json` — OPTIONAL, cost-guarded.** A flat array of `{query, should_trigger}` booleans — fixtures for the headless trigger-benchmark (`claude -p` × hundreds → burns usage; see step 7's cost guard). It measures auto-trigger recall/precision, a *different* axis. It is **NOT a substitute**: a repo shipping only `trigger-evals.json` has zero GREEN coverage. Prefer the scenario evals; add the trigger set only when *triggering itself* is the open question.
+
 ## 6. Git init + first commit (LOCAL, gated)
 
 ```bash
