@@ -29,7 +29,7 @@ forjador-de-skills/
 ## The skill
 
 ### forjador-de-skills
-The methodology for forging a Milo-style skill plugin. Covers repo anatomy (core components always; `hooks/`, `.mcp.json.example`, `build.sh`+`dist/`, `docs/` as optional-with-triggers), the 8-step authoring pipeline (scrub → scaffold → migrate → polish → evals → git → validate → refactor), distribution via a GitHub marketplace (auto-update fires at startup only), and naming/privacy conventions. Leans on `superpowers:writing-skills` and `skill-creator` — does not duplicate them.
+The methodology for forging a well-structured skill plugin in this setup. Covers repo anatomy (core components always; `hooks/`, `.mcp.json.example`, `build.sh`+`dist/`, `docs/` as optional-with-triggers), the 8-step authoring pipeline (scrub → scaffold → migrate → polish → evals → git → validate → refactor), distribution via a GitHub marketplace (auto-update fires at startup only), and naming/privacy conventions. Leans on `superpowers:writing-skills` and `skill-creator` — does not duplicate them.
 
 ## Skill Activation
 
