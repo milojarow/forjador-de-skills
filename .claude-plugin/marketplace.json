@@ -10,7 +10,7 @@
       "name": "forjador-de-skills",
       "source": "./",
       "description": "Use when scaffolding, packaging, or publishing a Claude Code skill plugin — writing its marketplace.json / plugin.json manifests, wiring it as a GitHub marketplace, naming it, stamping it from templates, or debugging why an update did not reach a session. A thin layer over superpowers:writing-skills; skill-creator is an optional helper.",
-      "version": "0.2.5",
+      "version": "0.2.6",
       "author": {
         "name": "milojarow",
         "url": "https://github.com/milojarow"

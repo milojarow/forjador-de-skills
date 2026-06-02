@@ -1,0 +1,9 @@
+{
+  "id": "forjador-006",
+  "skills": ["forjador-de-skills"],
+  "query": "I wrote a SKILL.md and a trigger-evals.json with 20 query/should_trigger booleans. Is my skill ready to validate and publish?",
+  "expected_behavior": ["explain that trigger-evals.json is the OPTIONAL, cost-guarded eval genre and is NOT a substitute for scenario evals", "require 3-5 scenario eval-NNN-<topic>.json files with expected_behavior[] drawn from the skill's own documented walls", "run the GREEN validation (step 7): a single in-session subagent given only the skill, not the headless trigger-benchmark by default (cost guard)", "confirm the privacy scrub (step 1) and GREEN validation (step 7) are both non-optional pipeline steps"],
+  "expected_content": ["GREEN", "subagent", "trigger-evals", "scenario", "authoring-pipeline.md"],
+  "priority": "high",
+  "notes": "Guards the 8-step authoring pipeline order and the scenario-vs-trigger eval-genres distinction in authoring-pipeline.md — the only reference file no other scenario eval routes to."
+}
