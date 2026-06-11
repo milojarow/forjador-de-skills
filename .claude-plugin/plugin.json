@@ -1,6 +1,6 @@
 {
   "name": "forjador-de-skills",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Meta-skill for forging well-made Claude Code skill plugins — anatomy, authoring pipeline, distribution, conventions, and copyable templates",
   "author": {
     "name": "milojarow",

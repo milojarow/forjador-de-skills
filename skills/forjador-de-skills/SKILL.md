@@ -62,6 +62,12 @@ The repo **is** the marketplace — its `.claude-plugin/marketplace.json` declar
 
 Detail (full update mechanics + gotchas): [reference/distribution.md](reference/distribution.md).
 
+## Skill vs infrastructure — classify before packaging
+
+Before packaging, decide which kind it is: **knowledge-to-act** (the model performs the task and needs the skill in context — a classic CSO) or **infrastructure-that-runs** (hooks/daemon/headless agents do the work on harness events). For the latter, keep the plugin as the distribution vehicle but give its skill a **maintenance-only `description`** — triggers only when working ON the system (install, migrate, tune, debug, extend) and explicitly excludes the routine operation the machinery already handles. Otherwise the skill loads on every domain prompt to document machinery that runs without the model.
+
+Detail: [reference/skill-vs-infrastructure.md](reference/skill-vs-infrastructure.md).
+
 ## Validating a skill that installs or runs code
 
 The GREEN check (step 7) proves the docs are findable — not that the skill works off the author's machine. A skill that ships an **installer, hooks, a daemon, or headless subagents** is a distributed product: validate doc↔code coherence after any redesign, ensure the installer recreates EVERY runtime dep in a stable dir (not the per-version cache), and make the `status` command probe the way the runtime actually does. *"Validated on my machine" ≠ "validated as a distributed product."*
