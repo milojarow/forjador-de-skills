@@ -62,6 +62,20 @@ The repo **is** the marketplace — its `.claude-plugin/marketplace.json` declar
 
 Detail (full update mechanics + gotchas): [reference/distribution.md](reference/distribution.md).
 
+## Gating a plugin per repo, and what it costs to leave it on
+
+An enabled plugin pays rent in **every** session's skill listing, fired or not. Scope it with
+the CLI — `claude plugin disable <plugin> --scope user`, then `--scope project` inside the repo
+where it belongs (a router skill does NOT reduce the listing). Price it before installing with
+`claude plugin details <plugin>`: it splits **always-on** (paid every session) from
+**on-invoke**. Budget roughly **~250 tokens per skill**. The listing has a budget
+(`skillListingBudgetFraction`, default 1%); over it, Claude Code drops the *descriptions* of
+the least-used skills — so a big, rarely-used pack degrades the triggering of the skills you
+do use. Note the packaging trade: `skillOverrides` (`name-only` et al.) does **not** apply to
+plugin skills.
+
+Detail: [reference/gating-and-token-cost.md](reference/gating-and-token-cost.md).
+
 ## Skill vs infrastructure — classify before packaging
 
 Before packaging, decide which kind it is: **knowledge-to-act** (the model performs the task and needs the skill in context — a classic CSO) or **infrastructure-that-runs** (hooks/daemon/headless agents do the work on harness events). For the latter, keep the plugin as the distribution vehicle but give its skill a **maintenance-only `description`** — triggers only when working ON the system (install, migrate, tune, debug, extend) and explicitly excludes the routine operation the machinery already handles. Otherwise the skill loads on every domain prompt to document machinery that runs without the model.
