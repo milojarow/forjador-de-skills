@@ -76,6 +76,16 @@ plugin skills.
 
 Detail: [reference/gating-and-token-cost.md](reference/gating-and-token-cost.md).
 
+## Triggering — a description does not make a skill fire
+
+A polished `description` makes the skill **findable**; it does not make the model go looking.
+A router skill in particular does not fire on description alone. Measure it before believing
+it — one headless run without naming the skill, one positive control naming it — then make
+invocation deterministic outside the skill: an always-on imperative in `CLAUDE.md`, or simply
+naming the skill in the prompt.
+
+Detail (the measurement recipe, its cost guard, and the harness traps): [reference/triggering-and-invocation.md](reference/triggering-and-invocation.md).
+
 ## Skill vs infrastructure — classify before packaging
 
 Before packaging, decide which kind it is: **knowledge-to-act** (the model performs the task and needs the skill in context — a classic CSO) or **infrastructure-that-runs** (hooks/daemon/headless agents do the work on harness events). For the latter, keep the plugin as the distribution vehicle but give its skill a **maintenance-only `description`** — triggers only when working ON the system (install, migrate, tune, debug, extend) and explicitly excludes the routine operation the machinery already handles. Otherwise the skill loads on every domain prompt to document machinery that runs without the model.

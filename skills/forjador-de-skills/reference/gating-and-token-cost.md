@@ -10,7 +10,9 @@ Recurring request: *"I want these N skills to exist only when I work on this kin
 project."*
 
 The answer is **not** a router skill. A router does not shrink the listing — the child
-skills are still listed, so the always-on cost is unchanged. The answer is the CLI:
+skills are still listed, so the always-on cost is unchanged. (Nor does a router reliably
+*fire* on its description alone — see [triggering-and-invocation.md](triggering-and-invocation.md).)
+The answer is the CLI:
 
 ```bash
 claude plugin disable <plugin> --scope user      # off everywhere
