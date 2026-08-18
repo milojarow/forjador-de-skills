@@ -53,10 +53,39 @@ Descriptive filenames: `eval-001-<topic>.json`.
 ```bash
 git -C <repo> init
 git -C <repo> add -A
-git -C <repo> commit -m "Scaffold <app>-skills plugin v0.1.0" -m "<body>" -m "Co-Authored-By: <model> <noreply@anthropic.com>"
+
+cat > "$SCRATCH/msg.txt" <<'EOF'          # quoted delimiter = zero expansion
+Scaffold <app>-skills plugin v0.1.0
+
+<body — backticks, $vars and "quotes" are all safe in here>
+
+Co-Authored-By: <model> <noreply@anthropic.com>
+EOF
+git -C <repo> commit -F "$SCRATCH/msg.txt"
 ```
 
 No remote, no push, no `marketplace add` until the operator declares it ready (the **install gate**). `v0.1.0` = pre-release.
+
+> **⚠️ Never pass a non-trivial commit message with `-m`.** The agent's shell is **zsh**, and
+> backticks inside a `-m` string are **command substitution**: zsh tries to execute the quoted
+> identifier, prints `command not found`, and the commit **still succeeds with exit 0** — with
+> the word replaced by the failed command's empty output.
+>
+> ```text
+> written:  `explicit` was the catch-all
+> stored:    was the catch-all
+> ```
+>
+> The failure is silent where it counts: the hash exists, the zsh error scrolls away in the
+> output, and nobody re-reads a message after committing. Same family as the other zsh
+> surprises (no word-splitting on unquoted expansion).
+>
+> **Check whether it already happened:** `git log -1 --format=%B` and look for the backticks.
+> If they vanished together with the word between them, this is why. **Fix:**
+> `git commit --amend -F <file>`.
+>
+> The heredoc with a **quoted** delimiter (`<<'EOF'`) is the safe pattern for *any* long text
+> carrying metacharacters — commit messages, eval JSON, `description` drafts — not just commits.
 
 ## 7. Validate (GREEN — the real test)
 
